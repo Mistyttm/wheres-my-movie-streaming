@@ -5,6 +5,6 @@
     "nodemon": "^3.0.1"
   },
   "scripts": {
-    "run": "nodemon ./app/server/index.js"
+    "dev": "nodemon ./app/server/index.js"
   }
 }
