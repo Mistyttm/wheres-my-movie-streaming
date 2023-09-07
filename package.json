@@ -1,10 +1,11 @@
 {
-  "dependencies": {
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "nodemon": "^3.0.1"
-  },
-  "scripts": {
-    "dev": "nodemon ./app/server/index.js"
-  }
+    "dependencies": {
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "nodemon": "^3.0.1"
+    },
+    "scripts": {
+        "dev": "cd ./src/app && npm run build && (cd ../.. && nodemon --exec 'node -r dotenv/config' ./src/server/index.js)"
+    }
 }
