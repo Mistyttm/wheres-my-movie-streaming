@@ -4,13 +4,17 @@ LABEL maintainer="github.com/Mistyttm"
 
 ENV NODE_ENV=development
 
-WORKDIR /app
+# Working directory of the server
+WORKDIR /src
 
-COPY ["package.json", "package-lock.json*", "./"]
+COPY package*.json ./
 
-RUN npm install
+# Install node modules
+RUN npm ci
 
-COPY . .
+# Copy source code
+COPY ./src ./src
 
 EXPOSE 5000
 CMD ["npm", "run", "dev"]
+
