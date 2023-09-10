@@ -57,7 +57,7 @@ router.get("/randomMovie", function (req, res) {
                 )
                 .then(function (response) {
                     if (response.data?.status_code === 34) {
-                        res.send({ success: false, error: "Movie not found, please try again", status: 404 })
+                        res.send({ error: "Movie not found, please try again", status: 404 })
                     } else {
                         res.send(response.data);
                     }
