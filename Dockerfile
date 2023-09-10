@@ -1,8 +1,8 @@
-FROM node:18-alpine
+FROM oven/bun
 LABEL authors="Emmey Leo"
 LABEL maintainer="github.com/Mistyttm"
 
-ENV NODE_ENV=development
+ENV BUN_ENV=development
 
 # Working directory of the server
 WORKDIR /src
@@ -10,11 +10,11 @@ WORKDIR /src
 COPY package*.json ./
 
 # Install node modules
-RUN npm ci
+RUN bun i
 
 # Copy source code
 COPY ./src ./src
 
 EXPOSE 5000
-CMD ["npm", "run", "dev"]
+CMD ["bun", "run", "dev"]
 

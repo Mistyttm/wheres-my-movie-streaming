@@ -9,6 +9,6 @@
         "nodemon": "^3.0.1"
     },
     "scripts": {
-        "dev": "cd ./src/app && bun run build && (cd ../.. && nodemon --exec 'bun -r dotenv/config' ./src/server/index.js)"
+        "dev": "cd ./src/app && bun run build && (cd ../.. &&  bun -r dotenv/config --hot ./src/server/index.js)"
     }
 }
