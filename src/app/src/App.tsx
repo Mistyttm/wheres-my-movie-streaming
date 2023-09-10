@@ -1,36 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-
-interface MovieData {
-    adult: boolean;
-    backdrop_path: string;
-    belongs_to_collection: string;
-    budget: number;
-    genres: string[];
-    homepage: string;
-    id: number;
-    imdb_id: string;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    production_companies: string[];
-    production_countries: string[];
-    release_date: string;
-    revenue: number;
-    runtime: number;
-    spoken_languages: string[];
-    status: string;
-    tagline: string;
-    title: string;
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
-}
+import { MovieData } from "./interfaces/MovieData";
 
 function App() {
-    const [movie, setMovie] = useState<MovieData>({});
+    const [movie, setMovie] = useState<MovieData | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -42,6 +15,7 @@ function App() {
                 if (response.data.error) {
                     // Handle 404 error here
                     console.error("Movie not found");
+                    fetchMovie();
                 } else {
                     setMovie(response.data);
                 }
@@ -62,11 +36,20 @@ function App() {
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-                Object.keys(movie).map((key) => (
-                    <p key={key}>
-                        {key}: {movie[key]}
-                    </p>
-                ))
+                <div>
+                    {movie ? (
+                        Object.keys(movie).map((key) => (
+                            <div key={key}>
+                                <strong>{key}:</strong>{" "}
+                                {typeof movie[key] === "object"
+                                    ? JSON.stringify(movie[key])
+                                    : movie[key]}
+                            </div>
+                        ))
+                    ) : (
+                        <p>No movie data available.</p>
+                    )}
+                </div>
             )}
         </div>
     );
