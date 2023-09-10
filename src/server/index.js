@@ -21,10 +21,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "app", "dist", "index.html"));
 });
 
-app.get("/api/hello", (req, res) => {
-    res.send({ express: "Hello From Express" });
-});
-
 // Routes
 app.use("/api/ip", ipRouter);
 app.use("/api/movies", moviesRouter);
