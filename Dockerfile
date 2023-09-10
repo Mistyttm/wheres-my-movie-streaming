@@ -3,6 +3,7 @@ LABEL authors="Emmey Leo"
 LABEL maintainer="github.com/Mistyttm"
 
 ENV BUN_ENV=development
+ENV RAPIDAPI_HOST=streaming-availability.p.rapidapi.com
 
 # Working directory of the server
 WORKDIR /src
