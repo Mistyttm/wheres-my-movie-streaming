@@ -1,4 +1,4 @@
-.lockb
+*.lockb
 # Logs
 logs/
 *.log
