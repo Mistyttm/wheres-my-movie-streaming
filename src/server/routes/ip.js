@@ -7,6 +7,9 @@ router.get("/", (req, res) => {
     if (ipAddress.substring(0, 7) == "::ffff:") {
         ipAddress = ipAddress.substring(7);
     }
+    if (ipAddress === "localhost") {
+        ipAddress = "192.168.0.1";
+    }
     axios
         .get(`https://ipinfo.io/${ipAddress}?token=${process.env.IPINFO_KEY}`)
         .then(function (response) {

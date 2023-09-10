@@ -30,6 +30,6 @@ app.use("/api/movies", moviesRouter);
 app.use("/api/services", servicesRouter);
 
 // start express server on port 5000
-app.listen(5000, () => {
+app.listen(5001, () => {
     console.log("server started on port 5001");
 });
