@@ -57,9 +57,7 @@ router.get("/randomMovie", function (req, res) {
                 )
                 .then(function (response) {
                     if (response.data?.status_code === 34) {
-                        axios.get(
-                            `http://127.0.0.1:5000/api/movies/randomMovie`
-                        );
+                        res.send({ error: "Movie not found, please try again", status: 404 })
                     } else {
                         res.send(response.data);
                     }
