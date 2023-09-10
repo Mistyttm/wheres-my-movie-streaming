@@ -41,9 +41,10 @@ function App() {
                         Object.keys(movie).map((key) => (
                             <div key={key}>
                                 <strong>{key}:</strong>{" "}
-                                {typeof movie[key] === "object"
+                                {typeof movie[key] === "object" &&
+                                movie[key] !== null
                                     ? JSON.stringify(movie[key])
-                                    : movie[key]}
+                                    : (movie[key] as string)}
                             </div>
                         ))
                     ) : (
