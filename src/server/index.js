@@ -7,6 +7,7 @@ const logger = require("morgan");
 const ipRouter = require("./routes/ip");
 const moviesRouter = require("./routes/movies");
 const servicesRouter = require("./routes/services");
+const awsRouter = require("./routes/aws");
 
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "app", "dist")));
@@ -28,6 +29,7 @@ app.get("/api/hello", (req, res) => {
 app.use("/api/ip", ipRouter);
 app.use("/api/movies", moviesRouter);
 app.use("/api/services", servicesRouter);
+app.use("/api/aws", awsRouter);
 
 // start express server on port 5000
 app.listen(5000, () => {
