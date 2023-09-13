@@ -6,6 +6,7 @@ const logger = require("morgan");
 
 const ipRouter = require("./routes/ip");
 const moviesRouter = require("./routes/movies");
+const tvRouter = require("./routes/tv");
 const servicesRouter = require("./routes/services");
 const awsRouter = require("./routes/aws");
 
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/ip", ipRouter);
 app.use("/api/movies", moviesRouter);
+app.use("/api/tv", tvRouter);
 app.use("/api/services", servicesRouter);
 app.use("/api/aws", awsRouter);
 
