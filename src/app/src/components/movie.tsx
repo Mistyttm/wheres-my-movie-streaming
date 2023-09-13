@@ -1,3 +1,3 @@
-import { MovieData } from "../interfaces/MovieData";
+// import { MovieData } from "../interfaces/MovieData";
 
-export default function movie(movie: MovieData) {}
+// export default function movie(movie: MovieData) {}
