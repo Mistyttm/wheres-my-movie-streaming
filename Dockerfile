@@ -5,6 +5,8 @@ LABEL maintainer="github.com/Mistyttm"
 ENV BUN_ENV=development
 ENV RAPIDAPI_HOST=streaming-availability.p.rapidapi.com
 
+COPY . .
+
 # Working directory of the server
 WORKDIR /src
 
@@ -14,7 +16,7 @@ COPY package*.json ./
 RUN bun i
 
 # Copy source code
-COPY ./src ./src
+# COPY ./src ./src
 
 EXPOSE 5000
 CMD ["bun", "run", "dev"]
