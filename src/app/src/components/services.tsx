@@ -36,29 +36,24 @@ export default function Services(props: ServicesProps) {
 
     return (
         <div>
-            {props.option === "movie" ? (
-                <div>
-                    <h1>Streaming Services:</h1>
-                    {error !== "" ? (
-                        <h2>
-                            There are no streaming services in your country for
-                            this show
-                        </h2>
-                    ) : (
-                        <div>
-                            <h2>happy</h2>
-                            {service?.map((s, index) => (
-                                <div key={index}>
-                                    <p>Service: {s.service}</p>
-                                    <p>Streaming Type: {s.streamingType}</p>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            ) : (
-                <h1>TV</h1>
-            )}
+            <div>
+                <h1>Streaming Services:</h1>
+                {error !== "" || country === "" ? (
+                    <h2>
+                        There are no streaming services in your country for this
+                        show
+                    </h2>
+                ) : (
+                    <div>
+                        {service?.map((s, index) => (
+                            <div key={index}>
+                                <p>Service: {s.service}</p>
+                                <p>Streaming Type: {s.streamingType}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
