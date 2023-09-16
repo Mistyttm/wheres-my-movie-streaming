@@ -21,6 +21,12 @@ app.use(logger("combined"));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "app", "dist", "index.html"));
 });
+app.get("/movie", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "app", "dist", "index.html"));
+});
+app.get("/tv", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "app", "dist", "index.html"));
+});
 
 // Routes
 app.use("/api/ip", ipRouter);
