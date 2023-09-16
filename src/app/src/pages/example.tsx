@@ -1,5 +1,6 @@
 import { useSearchParams, Link } from "react-router-dom";
 import ExampleMovie from "../components/exampleMovie";
+import ExampleTV from "../components/exampleTV";
 
 function Example() {
     const [searchParams] = useSearchParams();
@@ -9,7 +10,7 @@ function Example() {
     return (
         <div className="App">
             <h1 className="text-3xl font-bold underline">{type} Randomizer</h1>
-            {type === "movie" ? <ExampleMovie /> : <h1>TV</h1>}
+            {type === "movie" ? <ExampleMovie /> : <ExampleTV />}
             <Link to="/">
                 <h1 className="text-3xl font-bold underline">Home</h1>
             </Link>
