@@ -1,16 +1,16 @@
-import { MovieData } from "../types/MovieData";
+import { MediaData } from "../types/MediaData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Services from "./services";
 
 export default function ExampleMovie() {
-    const [movie, setMovie] = useState<MovieData | null>(null);
+    const [movie, setMovie] = useState<MediaData | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchMovie = async () => {
             try {
-                const response = await axios.get<MovieData>(
+                const response = await axios.get<MediaData>(
                     "/api/movies/movieDetails/597"
                 );
                 if (response.data.error) {
@@ -41,13 +41,13 @@ export default function ExampleMovie() {
                             {Object.keys(movie).map((key) => (
                                 <div key={key}>
                                     <strong>{key}:</strong>{" "}
-                                    {typeof movie[key as keyof MovieData] ===
+                                    {typeof movie[key as keyof MediaData] ===
                                         "object" &&
-                                    movie[key as keyof MovieData] !== null
+                                    movie[key as keyof MediaData] !== null
                                         ? JSON.stringify(
-                                              movie[key as keyof MovieData]
+                                              movie[key as keyof MediaData]
                                           )
-                                        : `${movie[key as keyof MovieData]}`}
+                                        : `${movie[key as keyof MediaData]}`}
                                 </div>
                             ))}
                             <Services option="movie" id={movie.id} />

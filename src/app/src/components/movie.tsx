@@ -1,4 +1,4 @@
-import { MovieData } from "../types/MovieData";
+import { MovieData } from "../types/MediaData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Services from "./services";
