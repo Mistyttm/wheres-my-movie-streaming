@@ -1,4 +1,4 @@
-export type MovieData = {
+export type MediaData = {
     adult: boolean;
     backdrop_path: string;
     belongs_to_collection: string | null;
