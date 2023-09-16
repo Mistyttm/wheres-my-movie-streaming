@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 
 function MoviePage() {
 
-
-    
-
     return (
         <div className="App">
             <h1 className="text-3xl font-bold underline">Movie Randomizer</h1>

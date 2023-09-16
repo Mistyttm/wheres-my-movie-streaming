@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { MovieData } from "../interfaces/MovieData";
+import { MovieData } from "../types/MovieData";
 
 function Tv() {
     const [movie, setMovie] = useState<MovieData | null>(null);
@@ -10,7 +10,7 @@ function Tv() {
         const fetchMovie = async () => {
             try {
                 const response = await axios.get<MovieData>(
-                    "http://127.0.0.1:5001/api/movies/randomMovie"
+                    "/api/movies/randomMovie"
                 );
                 if (response.data.error) {
                     // Handle 404 error here
@@ -45,8 +45,8 @@ function Tv() {
                                         "object" &&
                                     movie[key as keyof MovieData] !== null
                                         ? JSON.stringify(
-                                                movie[key as keyof MovieData]
-                                            )
+                                              movie[key as keyof MovieData]
+                                          )
                                         : `${movie[key as keyof MovieData]}`}
                                 </div>
                             ))}

@@ -1,4 +1,4 @@
-import { MovieData } from "../interfaces/MovieData";
+import { MovieData } from "../types/MovieData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Services from "./services";
@@ -11,7 +11,7 @@ export default function Movie() {
         const fetchMovie = async () => {
             try {
                 const response = await axios.get<MovieData>(
-                    "http://127.0.0.1:5001/api/movies/randomMovie"
+                    "/api/movies/randomMovie"
                 );
                 if (response.data.error) {
                     // Handle 404 error here
@@ -50,13 +50,13 @@ export default function Movie() {
                                         : `${movie[key as keyof MovieData]}`}
                                 </div>
                             ))}
+                            <Services option="movie" id={movie.id} />
                         </div>
                     ) : (
                         <p>Loading...</p>
                     )}
                 </div>
             )}
-            <Services option="movie" />
         </div>
     );
 }

@@ -1,22 +1,35 @@
 import { useEffect, useState } from "react";
-import { ServicesProps } from "../interfaces/ServicesProps.ts";
+import { ServicesProps } from "../types/ServicesProps.ts";
 import axios from "axios";
+import { ServiceData } from "../types/ServiceData.ts";
 
 export default function Services(props: ServicesProps) {
-    const [ip, setIp] = useState<string>("");
-    console.log(ip);
+    const [country, setCountry] = useState<string>("");
+    const [service, setService] = useState<ServiceData | null>(null);
+
+    const serviceCall = (id: number, location: string) => {
+        axios
+            .get(`/api/services/${props.option}?id=${id}`)
+            .then((response) => {
+                setService(response.data[location]);
+                console.log(service);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:5001/api/ip").then(
+        axios.get(`/api/ip`).then(
             (response) => {
-                setIp(response.data.ip);
+                setCountry(response.data.country);
             },
             (error) => {
                 console.log(error);
             }
         );
     });
-
+    serviceCall(props.id, country);
     return (
         <div>
             <h1>Services</h1>
