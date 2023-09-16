@@ -4,9 +4,9 @@ const router = express.Router();
 const axios = require("axios");
 
 AWS.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    sessionToken: process.env.AWS_SESSION_TOKEN,
+    accessKeyId: process.env.aws_access_key_id,
+    secretAccessKey: process.env.aws_secret_access_key,
+    sessionToken: process.env.aws_session_token,
     region: "ap-southeast-2",
 });
 
