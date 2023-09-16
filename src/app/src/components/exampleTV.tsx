@@ -1,20 +1,21 @@
+import { MediaData } from "../types/MediaData";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { MovieData } from "../types/MediaData";
+import Services from "./services";
 
-function Tv() {
-    const [movie, setMovie] = useState<MovieData | null>(null);
+export default function ExampleTV() {
+    const [movie, setMovie] = useState<MediaData | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchMovie = async () => {
             try {
-                const response = await axios.get<MovieData>(
-                    "/api/movies/randomMovie"
+                const response = await axios.get<MediaData>(
+                    "/api/tv/tvDetails/1396"
                 );
                 if (response.data.error) {
                     // Handle 404 error here
-                    console.error("Movie not found");
+                    fetchMovie();
                 } else {
                     setMovie(response.data);
                 }
@@ -30,8 +31,7 @@ function Tv() {
     }, []);
 
     return (
-        <div className="App">
-            <h1 className="text-3xl font-bold underline">Movie Randomizer</h1>
+        <div>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
@@ -41,23 +41,22 @@ function Tv() {
                             {Object.keys(movie).map((key) => (
                                 <div key={key}>
                                     <strong>{key}:</strong>{" "}
-                                    {typeof movie[key as keyof MovieData] ===
+                                    {typeof movie[key as keyof MediaData] ===
                                         "object" &&
-                                    movie[key as keyof MovieData] !== null
+                                    movie[key as keyof MediaData] !== null
                                         ? JSON.stringify(
-                                              movie[key as keyof MovieData]
+                                              movie[key as keyof MediaData]
                                           )
-                                        : `${movie[key as keyof MovieData]}`}
+                                        : `${movie[key as keyof MediaData]}`}
                                 </div>
                             ))}
+                            <Services option="movie" id={movie.id} />
                         </div>
                     ) : (
-                        <p>No movie data available.</p>
+                        <p>Loading...</p>
                     )}
                 </div>
             )}
         </div>
     );
 }
-
-export default Tv;
