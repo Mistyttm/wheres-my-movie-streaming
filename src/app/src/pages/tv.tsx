@@ -10,17 +10,17 @@ function Tv() {
         const fetchMovie = async () => {
             try {
                 const response = await axios.get<MediaData>(
-                    "/api/movies/randomMovie"
+                    "/api/tv/randomShow"
                 );
                 if (response.data.error) {
                     // Handle 404 error here
-                    console.error("Movie not found");
+                    console.error("Show not found");
                 } else {
                     setMovie(response.data);
                 }
             } catch (error) {
                 // Handle any other errors here
-                console.error("Error fetching movie data", error);
+                console.error("Error fetching tv data", error);
             } finally {
                 setIsLoading(false);
             }
@@ -31,7 +31,7 @@ function Tv() {
 
     return (
         <div className="App">
-            <h1 className="text-3xl font-bold underline">Movie Randomizer</h1>
+            <h1 className="text-3xl font-bold underline">TV Randomizer</h1>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
@@ -52,7 +52,7 @@ function Tv() {
                             ))}
                         </div>
                     ) : (
-                        <p>No movie data available.</p>
+                        <p>No tv data available.</p>
                     )}
                 </div>
             )}

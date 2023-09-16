@@ -21,7 +21,7 @@ export default function ExampleTV() {
                 }
             } catch (error) {
                 // Handle any other errors here
-                console.error("Error fetching movie data", error);
+                console.error("Error fetching tv data", error);
             } finally {
                 setIsLoading(false);
             }
@@ -50,7 +50,7 @@ export default function ExampleTV() {
                                         : `${movie[key as keyof MediaData]}`}
                                 </div>
                             ))}
-                            <Services option="movie" id={movie.id} />
+                            <Services option="tv" id={movie.id} />
                         </div>
                     ) : (
                         <p>Loading...</p>
