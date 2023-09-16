@@ -5,35 +5,60 @@ import { ServiceData } from "../types/ServiceData.ts";
 
 export default function Services(props: ServicesProps) {
     const [country, setCountry] = useState<string>("");
-    const [service, setService] = useState<ServiceData | null>(null);
+    const [service, setService] = useState<ServiceData[]>([]);
+    const [error, setError] = useState<string>("");
 
-    const serviceCall = (id: number, location: string) => {
+    useEffect(() => {
+        // Fetch the country data
         axios
-            .get(`/api/services/${props.option}?id=${id}`)
+            .get(`/api/ip`)
             .then((response) => {
-                setService(response.data[location]);
-                console.log(service);
+                setCountry(response.data.country);
             })
             .catch((error) => {
                 console.log(error);
             });
-    };
+        // Fetch the service data based on props.id and country when they are available
+        if (props.id && country) {
+            axios
+                .get(`/api/services/${props.option}?id=${props.id}`)
+                .then((response) => {
+                    setService(response.data[country]);
+                    if (country === "") {
+                        setError("No services available in your country");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+    }, [country]);
 
-    useEffect(() => {
-        axios.get(`/api/ip`).then(
-            (response) => {
-                setCountry(response.data.country);
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-    });
-    serviceCall(props.id, country);
     return (
         <div>
-            <h1>Services</h1>
-            {props.option === "movie" ? <h1>Movie</h1> : <h1>TV</h1>}
+            {props.option === "movie" ? (
+                <div>
+                    <h1>Streaming Services:</h1>
+                    {error !== "" ? (
+                        <h2>
+                            There are no streaming services in your country for
+                            this show
+                        </h2>
+                    ) : (
+                        <div>
+                            <h2>happy</h2>
+                            {service?.map((s, index) => (
+                                <div key={index}>
+                                    <p>Service: {s.service}</p>
+                                    <p>Streaming Type: {s.streamingType}</p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            ) : (
+                <h1>TV</h1>
+            )}
         </div>
     );
 }
