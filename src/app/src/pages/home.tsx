@@ -19,8 +19,10 @@ function App() {
     });
     return(
         <div>
-            <Link to="/movie">Movie</Link>
+            <Link to="/movie">Movie</Link> 
             <Link to="/tv">TV</Link>
+            <Link to="/example?show=movie">Example Movie</Link>
+            <Link to="/example?show=tv">Example TV</Link>
         </div>
     )
 }
