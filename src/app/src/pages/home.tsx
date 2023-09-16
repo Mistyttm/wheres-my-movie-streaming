@@ -2,11 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+axios.get("/api/aws/visit");
+
 function App() {
     const [count, setCount] = useState<number>(0);
-    axios.get("http://127.0.0.1:5001/api/aws/visit");
     useEffect(() => {
-        axios.get("http://127.0.0.1:5001/api/aws/read").then(
+        axios.get("/api/aws/read").then(
             (response) => {
                 setCount(response.data.data.count);
                 console.log(count);
