@@ -27,6 +27,9 @@ app.get("/movie", (req, res) => {
 app.get("/tv", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "app", "dist", "index.html"));
 });
+app.get("/example", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "app", "dist", "index.html"));
+});
 
 // Routes
 app.use("/api/ip", ipRouter);
