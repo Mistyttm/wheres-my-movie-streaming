@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const PORT = process.env.PORT || 5001;
 
 router.get("/latest", function (req, res) {
     axios
@@ -14,7 +15,7 @@ router.get("/latest", function (req, res) {
 
 router.get("/randomId", function (req, res) {
     axios
-        .get(`http://127.0.0.1:5000/api/movies/latest`)
+        .get(`http://127.0.0.1:${PORT}/api/movies/latest`)
         .then(function (response) {
             const randomId = Math.floor(
                 Math.random() * response.data.total_movies
@@ -49,11 +50,11 @@ router.get("/externalID/:id", function (req, res) {
 
 router.get("/randomShow", function (req, res) {
     axios
-        .get(`http://127.0.0.1:5000/api/movies/randomId`)
+        .get(`http://127.0.0.1:${PORT}/api/movies/randomId`)
         .then(function (response) {
             axios
                 .get(
-                    `http://127.0.0.1:5000/api/movies/movieDetails/${response.data.randomId}`
+                    `http://127.0.0.1:${PORT}/api/movies/movieDetails/${response.data.randomId}`
                 )
                 .then(function (response) {
                     if (response.data?.status_code === 34) {

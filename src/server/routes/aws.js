@@ -2,6 +2,7 @@ const AWS = require("aws-sdk");
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const PORT = process.env.PORT || 5001;
 
 AWS.config.update({
     accessKeyId: process.env.aws_access_key_id,
@@ -53,7 +54,7 @@ router.get("/visit", (req, res) => {
         }
     }
 
-    axios.get(`http://127.0.0.1:5000/api/aws/read`)
+    axios.get(`http://127.0.0.1:${PORT}/api/aws/read`)
     .then(function (response) {
         // JSON data to be written to S3
         const jsonTemplate = {
