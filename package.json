@@ -1,8 +1,17 @@
 {
-  "dependencies": {
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "passport": "^0.6.0",
-    "passport-steam": "^1.0.18"
-  }
+    "dependencies": {
+        "aws-sdk": "^2.1454.0",
+        "axios": "^1.5.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "morgan": "^1.10.0",
+        "nodemon": "^3.0.1",
+        "uuid": "^9.0.0"
+    },
+    "scripts": {
+        "dev": "cd ./src/app && bun run build && (cd ../.. &&  bun -r dotenv/config --hot ./src/server/index.js)",
+        "prod": "bun ./src/server/index.js"
+    }
 }
