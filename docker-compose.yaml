@@ -2,9 +2,11 @@ version: '3'
 
 services:
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile-development
     command: bun run dev
     volumes:
       - .:/src
     ports:
-      - "5001:5000"
+      - "5001:5001"
