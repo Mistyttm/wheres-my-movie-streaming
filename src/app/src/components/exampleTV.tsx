@@ -11,7 +11,7 @@ export default function ExampleTV() {
         const fetchMovie = async () => {
             try {
                 const response = await axios.get<MediaData>(
-                    "http://127.0.0.1:5001/api/tv/tvDetails/1396"
+                    "/api/tv/tvDetails/1396"
                 );
                 if (response.data.error) {
                     // Handle 404 error here
