@@ -11,6 +11,7 @@
         "uuid": "^9.0.0"
     },
     "scripts": {
-        "dev": "cd ./src/app && bun run build && (cd ../.. &&  bun -r dotenv/config --hot ./src/server/index.js)"
+        "dev": "cd ./src/app && bun run build && (cd ../.. &&  bun -r dotenv/config --hot ./src/server/index.js)",
+        "prod": "bun ./src/server/index.js"
     }
 }
