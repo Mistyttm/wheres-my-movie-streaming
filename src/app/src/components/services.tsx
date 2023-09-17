@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ServicesProps } from "../types/ServicesProps.ts";
 import axios from "axios";
 import { ServiceData } from "../types/ServiceData.ts";
+import { Link } from "react-router-dom";
 
 export default function Services(props: ServicesProps) {
     const [country, setCountry] = useState<string>("");
@@ -46,10 +47,17 @@ export default function Services(props: ServicesProps) {
                 ) : (
                     <div>
                         {service?.map((s, index) => (
-                            <div key={index}>
-                                <p>Service: {s.service}</p>
-                                <p>Streaming Type: {s.streamingType}</p>
-                            </div>
+                            <Link to={s.link} key={index}>
+                                <div>
+                                    <p>
+                                        <strong>Service</strong>: {s.service}
+                                    </p>
+                                    <p>
+                                        <strong>Streaming Type</strong>:{" "}
+                                        {s.streamingType}
+                                    </p>
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 )}

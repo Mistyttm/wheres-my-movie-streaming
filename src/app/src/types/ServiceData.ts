@@ -7,4 +7,5 @@ export type ServiceData = {
     subtitles: {locale: {language: string; region: string;}[]; closedCaptions: boolean}[];
     price: {amount: string; currency: string; formatted: string;};
     availableSince: number;
+    videoLink: string;
 };
