@@ -1,5 +1,11 @@
 # CAB432 Mashup Project
 
+***IN ORDER TO BUILD DOCKER IMAGE, THESE COMMANDS MUST FIRST BE RUN INSIDE `/src/app`***
+
+`bun install`
+
+`bun run build`
+
 ## Contents
 
  - [CAB432 Mashup Project](#cab432-mashup-project)
