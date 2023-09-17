@@ -37,19 +37,23 @@ export default function Movie() {
             ) : (
                 <div>
                     {movie ? (
-                        <div>
-                            {Object.keys(movie).map((key) => (
-                                <div key={key}>
-                                    <strong>{key}:</strong>{" "}
-                                    {typeof movie[key as keyof MediaData] ===
-                                        "object" &&
-                                    movie[key as keyof MediaData] !== null
-                                        ? JSON.stringify(
-                                              movie[key as keyof MediaData]
-                                          )
-                                        : `${movie[key as keyof MediaData]}`}
-                                </div>
-                            ))}
+                        <div className="grid h-screen place-items-center">
+                            <h2 className="text-4xl font-bold">
+                                {movie.title}
+                            </h2>
+                            <img
+                                src={
+                                    "https://image.tmdb.org/t/p/w300_and_h450_bestv2" +
+                                    movie.poster_path
+                                }
+                            />
+                            <section><h3 className="font-bold text-2xl">Overview</h3><br />{movie.overview}</section>
+                            <section>
+                                <h3 className="font-bold text-2xl">General Info</h3>
+                                <section><strong>Release Date:</strong> {movie.release_date}</section>
+                                <section><strong>Runtime:</strong> {movie.runtime}</section>
+                                <section><strong>Votes:</strong> {movie.vote_average}</section>
+                            </section>
                             <Services option="movie" id={movie.id} />
                         </div>
                     ) : (

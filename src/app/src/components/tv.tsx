@@ -1,9 +1,9 @@
-import { MediaData } from "../types/MediaData";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { MediaData } from "../types/MediaData";
 import Services from "./services";
 
-export default function ExampleTV() {
+function Tv() {
     const [movie, setMovie] = useState<MediaData | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -11,11 +11,11 @@ export default function ExampleTV() {
         const fetchMovie = async () => {
             try {
                 const response = await axios.get<MediaData>(
-                    "http://127.0.0.1:5001/api/tv/tvDetails/1396"
+                    "/api/tv/randomShow"
                 );
                 if (response.data.error) {
                     // Handle 404 error here
-                    fetchMovie();
+                    console.error("Show not found");
                 } else {
                     setMovie(response.data);
                 }
@@ -47,12 +47,25 @@ export default function ExampleTV() {
                                     movie.poster_path
                                 }
                             />
-                            <section><h3 className="font-bold text-2xl">Overview</h3><br />{movie.overview}</section>
                             <section>
-                                <h3 className="font-bold text-2xl">General Info</h3>
-                                <section><strong>Release Date:</strong> {movie.release_date}</section>
-                                <section><strong>Runtime:</strong> {movie.runtime}</section>
-                                <section><strong>Votes:</strong> {movie.vote_average}</section>
+                                <h3 className="font-bold text-2xl">Overview</h3>
+                                <br />
+                                {movie.overview}
+                            </section>
+                            <section>
+                                <h3 className="font-bold text-2xl">
+                                    General Info
+                                </h3>
+                                <section>
+                                    <strong>Release Date:</strong>{" "}
+                                    {movie.release_date}
+                                </section>
+                                <section>
+                                    <strong>Runtime:</strong> {movie.runtime}
+                                </section>
+                                <section>
+                                    <strong>Votes:</strong> {movie.vote_average}
+                                </section>
                             </section>
                             <Services option="tv" id={movie.id} />
                         </div>
@@ -64,3 +77,5 @@ export default function ExampleTV() {
         </div>
     );
 }
+
+export default Tv;

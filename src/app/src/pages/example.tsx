@@ -8,7 +8,7 @@ function Example() {
     const type = searchParams.get("show")
     
     return (
-        <div className="App">
+        <div className="flex flex-col items-center justify-center h-screen px-80">
             <h1 className="text-3xl font-bold underline">{type} Randomizer</h1>
             {type === "movie" ? <ExampleMovie /> : <ExampleTV />}
             <Link to="/">

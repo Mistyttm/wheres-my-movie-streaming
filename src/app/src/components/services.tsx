@@ -22,7 +22,9 @@ export default function Services(props: ServicesProps) {
         // Fetch the service data based on props.id and country when they are available
         if (props.id && country) {
             axios
-                .get(`/api/services/${props.option}?id=${props.id}`)
+                .get(
+                    `/api/services/${props.option}?id=${props.id}`
+                )
                 .then((response) => {
                     setService(response.data[country]);
                     if (country === "") {
@@ -38,17 +40,17 @@ export default function Services(props: ServicesProps) {
     return (
         <div>
             <div>
-                <h1>Streaming Services:</h1>
+                <h1 className="font-bold text-2xl">Streaming Services in {country.toUpperCase()}:</h1>
                 {error !== "" || country === "" ? (
                     <h2>
                         There are no streaming services in your country for this
                         show
                     </h2>
                 ) : (
-                    <div>
+                    <div className="flex">
                         {service?.map((s, index) => (
-                            <Link to={s.link} key={index}>
-                                <div>
+                            <div key={index} className="bg-cyan-800 hover:bg-cyan-300 w-40 mx-8 my-8 p-4 rounded-lg">
+                                <Link to={s.link}>
                                     <p>
                                         <strong>Service</strong>: {s.service}
                                     </p>
@@ -56,8 +58,8 @@ export default function Services(props: ServicesProps) {
                                         <strong>Streaming Type</strong>:{" "}
                                         {s.streamingType}
                                     </p>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
                         ))}
                     </div>
                 )}

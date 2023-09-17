@@ -18,11 +18,12 @@ function App() {
         ).catch((error) => {console.log(error)});
     });
     return(
-        <div>
-            <Link to="/movie">Movie</Link> 
-            <Link to="/tv">TV</Link>
-            <Link to="/example?show=movie">Example Movie</Link>
-            <Link to="/example?show=tv">Example TV</Link>
+        <div className="m-24">
+            <h1 className="m-24 font-bold text-6xl">Movie or TV Show Randomiser!</h1>
+            <Link to="/movie" className="text-4xl mx-8 text-white underline font-bold p-8 bg-orange-700 hover:bg-red-500 rounded-3xl">Movie</Link> 
+            <Link to="/tv" className="text-4xl mx-8 text-white underline font-bold p-8 bg-lime-400 hover:bg-red-500 rounded-3xl">TV</Link>
+            <Link to="/example?show=movie" className="text-4xl mx-8 text-white underline font-bold p-8 bg-cyan-900 hover:bg-red-500 rounded-3xl">Example Movie</Link>
+            <Link to="/example?show=tv" className="text-4xl mx-8 text-white underline font-bold p-8 bg-violet-900 hover:bg-red-500 rounded-3xl">Example TV</Link>
         </div>
     )
 }
